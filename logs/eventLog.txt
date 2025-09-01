@@ -1,3 +1,0 @@
-20250901	15:36:30 	 af8ed306-7b17-42e2-a538-ccc85e4309ca 	 log event emitted!
-20250901	15:36:41 	 149037db-45f1-4dd1-b8ce-13b1dce75c2b 	 log event emitted!
-20250901	15:37:01 	 8f285e27-c3ca-4424-b5f3-0a52037a3928 	 log event emitted!
