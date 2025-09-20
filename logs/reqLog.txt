@@ -1,0 +1,10 @@
+20250920	22:24:27 	 eac4cdae-fa24-4513-a73e-60e16a281a42 	 GET	 undefined	 /
+20250920	22:25:45 	 b64b4506-d0e3-4295-b17d-1f79a7032a84 	 GET	 undefined	 /
+20250920	22:25:45 	 cc11bc1a-6ed7-4ae9-ae84-2eec269b1f99 	 GET	 undefined	 /css/style.css
+20250920	22:34:35 	 ba380d45-55a0-42fe-a87a-02f39cbc6f2d 	 GET	 undefined	 /dave
+20250920	22:34:35 	 ebd47b2a-7655-4d14-a837-77acfc941f63 	 GET	 undefined	 /css/style.css
+20250920	22:34:40 	 ce967ec6-6717-4fd3-945c-f5f0f3c27512 	 GET	 undefined	 /css/style.css
+20250920	22:34:40 	 105351ab-ead9-4bfa-b18b-b13e300f010a 	 GET	 undefined	 /.well-known/appspecific/com.chrome.devtools.json
+20250920	22:34:51 	 fb072314-00ce-48bc-b877-80ae0a772b19 	 GET	 undefined	 /dave
+20250920	22:34:51 	 e84b7d22-471d-49de-b0bd-1062f82bc403 	 GET	 undefined	 /css/style.css
+20250920	22:34:51 	 a4f4999c-241c-4327-8e5e-3309d48fd7bd 	 GET	 undefined	 /.well-known/appspecific/com.chrome.devtools.json

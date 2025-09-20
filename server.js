@@ -1,15 +1,44 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const cors = require("cors");
+
+const errorHandler = require("./middlewares/errorHandler");
+const logEvents = require("./middlewares/logEvents");
 const PORT = process.env.PORT || 3500;
 
-//middlewares.......
+//!custom middleware
+app.use((req, res, next) => {
+  logEvents(`${req.method}\t ${req.headers.origin}\t ${req.url}`, "reqLog.txt");
+  console.log(`${req.method} ${req.path}`);
+  next();
+});
+
+//!CORS
+const whitelist = [
+  "https://www.google.com",
+  "http://127.0.0.1:5500",
+  "http://localhost:3500",
+];
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (whitelist.indexOf(origin) != -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("not allowed by CORS"));
+    }
+  },
+  optionsSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
+
+//!middlewares.......
 //built-in middleware to handle urlencoded data in other words, form data:'content-type:application/x-www-form-urlencoded'
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "/public")));
 
-//Routes.............
+//!Routes.............
 app.get("/", (req, res) => {
   // res.sendFile('./views/index.html', {root:__dirname});
   res.sendFile(path.join(__dirname, "views", "index.html"));
@@ -22,7 +51,7 @@ app.get(/^\/old-page(\.html)?$/, (req, res) => {
   res.redirect(301, "/new-page.html");
 });
 
-// Route handlers
+//!Route handlers
 app.get(
   /^\/hello(\.html)?$/,
   (req, res, next) => {
@@ -34,7 +63,7 @@ app.get(
   }
 );
 
-// chaining route handlers
+//!chaining route handlers
 const one = (req, res, next) => {
   console.log("one");
   next();
@@ -52,8 +81,22 @@ const three = (req, res) => {
 
 app.get(/^\/chain(.html)?$/, [one, two, three]);
 
-app.get(/\/*$/, (req, res) => {
-  res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
+// app.get(/\/*$/, (req, res) => {
+//   res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
+// });
+//~the above code block is getting changed to app.all
+app.all(/\^*$/, (req, res) => {
+  res.status(404);
+  if (req.accepts("html")) {
+    res.sendFile(path.join(__dirname, "views", "404.html"));
+  } else if (req.accepts("json")) {
+    res.json({ error: "404 Not Found" });
+  } else {
+    res.type("txt").send("404 Not Found");
+  }
 });
+
+//!error handling.....
+app.use(errorHandler);
 
 app.listen(PORT, () => console.log("server listening in on 3500"));
