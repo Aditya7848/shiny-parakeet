@@ -13,8 +13,11 @@ const myEmitter = new Emitter();
 const PORT = process.env.PORT || 3500;
 
 const serveFile = async (filePath, contentType, res) => {
-  try {
-    const data = await fsPromises.readFile(filePath, "utf8");
+  try {if(fs.existsSync(path.join(__dirname, 'files'))){
+    fs.mkdir(path.join(__dirname, 'files'))
+}
+    const data = await fsPromises.readFile(filePath, 
+      contentType === ('image/jpeg' || 'image/png') ? "" :  "utf8");
     res.writeHead(200, { "Content-Type": contentType });
     res.end(data);
   } catch (err) {
@@ -31,34 +34,34 @@ const server = http.createServer((req, res) => {
 
   let contentType;
 
-  switch (contentType) {
-    case ".css": {
+  switch (extention) {
+    case ".css": 
       contentType = "text/css";
       break;
-    }
-    case ".js": {
+    
+    case ".js": 
       contentType = "text/javascript";
       break;
-    }
-    case ".json": {
+    
+    case ".json": 
       contentType = "application/json";
       break;
-    }
-    case ".jpg": {
+    
+    case ".jpg": 
       contentType = "image/jpeg";
       break;
-    }
-    case ".png": {
+    
+    case ".png": 
       contentType = "image/png";
       break;
-    }
-    case ".txt": {
+    
+    case ".txt": 
       contentType = "text/plain";
       break;
-    }
-    default: {
+    
+    default: 
       contentType = "text/html";
-    }
+    
   }
 
   let filePath =
@@ -85,16 +88,17 @@ const server = http.createServer((req, res) => {
     //   res.end(data);
     // })
   } else {
+    // console.log(path.parse(filePath))
     // res.status = 404;
     // res.end();
     switch (path.parse(filePath).base) {
       case "old-page.html":
-        res.writeHead(301, { Location: "/new-page.html" });
+        res.writeHead(301, { 'Location': "/new-page.html" });
         res.end();
         break;
 
       case "www-page.html":
-        res.writeHead(301, { Location: "/" });
+        res.writeHead(301, { 'Location': "/" });
         res.end();
         break;
       default:
@@ -105,5 +109,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, () => console.log("server listening in on 3500"));
-// myEmitter.on("log", (msg) => logEvents(msg));
-//   myEmitter.emit("log", "log event emitted!");
+myEmitter.on("log", (msg) => logEvents(msg));
+myEmitter.emit("log", "log event emitted!");
