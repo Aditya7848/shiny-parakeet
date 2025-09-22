@@ -1,1 +1,6 @@
 20250920	22:24:27 	 a3754be3-6b97-41c1-8444-fbfc8638c633 	 Error: not allowed by CORS
+20250922	17:07:14 	 f4983f38-7944-4d46-8ee1-eba9a161889b 	 TypeError: Cannot read properties of undefined (reading 'firstname')
+20250922	17:08:32 	 0e8edd00-0702-4f36-982a-8ca91a5760ed 	 SyntaxError: Expected property name or '}' in JSON at position 8 (line 2 column 5)
+20250922	17:10:21 	 265a3733-7e64-4361-a22c-485adea4b4ff 	 TypeError: Cannot read properties of undefined (reading 'firstname')
+20250922	17:13:06 	 389cde68-b4a4-4a52-a353-b53ee618b1ee 	 TypeError: Cannot read properties of undefined (reading 'firstname')
+20250922	17:15:04 	 b562955a-9f7e-4d2e-a9ec-4158cf760c65 	 TypeError: Cannot read properties of undefined (reading 'firstname')
