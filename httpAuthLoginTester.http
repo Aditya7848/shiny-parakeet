@@ -2,7 +2,7 @@ POST http://localhost:3500/auth
 Content-Type: application/json
 
 {
-    "user":"walt",
-    "pass":"disney"
+    "user":"tom",
+    "pass":"jerry"
 }
 ###

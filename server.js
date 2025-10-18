@@ -6,6 +6,8 @@ const cors = require("cors");
 const errorHandler = require("./middlewares/errorHandler");
 const logEvents = require("./middlewares/logEvents");
 const corsOptions = require('./config/corsOptions')
+const cookieParser = require('cookie-parser')
+const verifyJWT = require('./middlewares/verityJWT')
 
 const PORT = process.env.PORT || 3500;
 
@@ -24,11 +26,17 @@ app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+//!middleware for cookies
+app.use(cookieParser())
+
 
 //!making Router seperately using express.Router()
 app.use('/', require('./routes/root'));
 app.use('/register', require('./routes/api/register'));
 app.use('/auth', require('./routes/api/auth'));
+
+app.use('/refresh', require('./routes/api/refresh'));
+app.use(verifyJWT);
 app.use('/employee', require('./routes/api/employees'));
 
 

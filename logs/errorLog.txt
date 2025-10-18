@@ -4,3 +4,8 @@
 20250922	17:10:21 	 265a3733-7e64-4361-a22c-485adea4b4ff 	 TypeError: Cannot read properties of undefined (reading 'firstname')
 20250922	17:13:06 	 389cde68-b4a4-4a52-a353-b53ee618b1ee 	 TypeError: Cannot read properties of undefined (reading 'firstname')
 20250922	17:15:04 	 b562955a-9f7e-4d2e-a9ec-4158cf760c65 	 TypeError: Cannot read properties of undefined (reading 'firstname')
+20251018	18:15:30 	 56701249-d794-4516-8648-ac8990a74704 	 TypeError: res.setStatus is not a function
+20251018	18:17:18 	 b22cb02f-4547-4cbe-88fc-cf0dec7faf1b 	 TypeError: Cannot read properties of undefined (reading 'id')
+20251018	18:17:36 	 4703ac47-5466-4e72-ba94-e8d32c8a9af8 	 TypeError: res.setStatus is not a function
+20251018	18:32:41 	 cb64e670-9190-4543-b25b-76567aaf7d10 	 TypeError: res.setStatus is not a function
+20251018	20:54:37 	 5b2f9f16-d008-41bb-ba93-ea8c46fda65d 	 TypeError: res.setStatus is not a function
