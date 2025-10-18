@@ -26,6 +26,7 @@ const postAllEmployees = (req, res) => {
 };
 
 const putAllEmployees = (req, res) => {
+  console.log(req.body.id)
   const employee = data.employees.find(emp => emp.id === parseInt(req.body.id))
   
   if(!employee){
@@ -55,8 +56,9 @@ const deleteAllEmployee = (req, res) => {
 };
 
 const getEmployee = (req, res) => {
-  const employee = data.employees.find(emp => emp.id === parseInt(req.body.id));
-  
+  console.log("req.body.id is", req.params.id);
+  const employee = data.employees.find(emp => emp.id === parseInt(req.params.id));
+
   if(!employee){
     res.status(400).json({'message' : `User With ID ${req.body.id} not found.`})
   }
