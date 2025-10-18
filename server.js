@@ -3,11 +3,10 @@ const app = express();
 const path = require("path");
 const cors = require("cors");
 
-
-
 const errorHandler = require("./middlewares/errorHandler");
 const logEvents = require("./middlewares/logEvents");
 const corsOptions = require('./config/corsOptions')
+
 const PORT = process.env.PORT || 3500;
 
 //!custom middleware
@@ -18,7 +17,6 @@ app.use((req, res, next) => {
 });
 
 //!CORS
-
 app.use(cors(corsOptions));
 
 //!middlewares.......
