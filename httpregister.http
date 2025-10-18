@@ -1,0 +1,16 @@
+POST http://localhost:3500/register
+Content-Type:application/json
+
+{
+    "user":"tom",
+    "pass":"jerry"
+}
+###
+
+POST http://localhost:3500/register
+Content-Type:application/json
+
+{
+    "user":"mario",
+    "pass":"super"
+}
