@@ -3,8 +3,11 @@ const app = express();
 const path = require("path");
 const cors = require("cors");
 
+
+
 const errorHandler = require("./middlewares/errorHandler");
 const logEvents = require("./middlewares/logEvents");
+const corsOptions = require('./config/corsOptions')
 const PORT = process.env.PORT || 3500;
 
 //!custom middleware
@@ -15,32 +18,17 @@ app.use((req, res, next) => {
 });
 
 //!CORS
-const whitelist = [
-  "https://www.google.com",
-  "http://127.0.0.1:5500",
-  "http://localhost:3500",
-];
-const corsOptions = {
-  origin: (origin, callback) => {
-    if (whitelist.indexOf(origin) != -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error("not allowed by CORS"));
-    }
-  },
-  optionsSuccessStatus: 200,
-};
+
 app.use(cors(corsOptions));
 
 //!middlewares.......
 //built-in middleware to handle urlencoded data in other words, form data:'content-type:application/x-www-form-urlencoded'
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "/public")));
+
 
 //!making Router seperately using express.Router()
 app.use('/', require('./routes/root'));
-app.use("/subdir", require("./routes/subdir"));
 app.use('/employee', require('./routes/api/employees'));
 
 
